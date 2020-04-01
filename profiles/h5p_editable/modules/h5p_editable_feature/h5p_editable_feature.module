@@ -6,3 +6,16 @@
  */
 
 include_once 'h5p_editable_feature.features.inc';
+
+
+/**
+ * Implements hook_page_build()
+ */
+function h5p_editable_feature_page_build(&$page) {
+    if (arg(0) == 'node' && arg(2) != 'edit') {
+        drupal_add_js(drupal_get_path('module', 'h5p_editable_feature') . '/custom.js');
+    }
+    elseif (arg(0) == 'node') {
+        drupal_add_css(drupal_get_path('module', 'h5p_editable_feature') . '/custom.css');
+    }
+}

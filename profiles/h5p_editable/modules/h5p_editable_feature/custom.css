@@ -1,0 +1,17 @@
+body {
+    overflow: auto !important;
+}
+.vertical-tabs.clearfix {
+    display: none;
+}
+
+#page-title {
+    display: none;
+}
+
+.form-actions input {
+    font-size: 30px;
+}
+#edit-delete {
+    display: none;
+}

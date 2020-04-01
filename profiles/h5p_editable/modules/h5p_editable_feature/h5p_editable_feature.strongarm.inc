@@ -98,6 +98,22 @@ function h5p_editable_feature_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'default_nodes_main';
+  $strongarm->value = '1';
+  $export['default_nodes_main'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'entity_iframe_bundle_node';
+  $strongarm->value = array(
+    'h5p_content' => 'h5p_content',
+  );
+  $export['entity_iframe_bundle_node'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'entity_iframe_theme';
   $strongarm->value = 'entity_iframe_theme';
   $export['entity_iframe_theme'] = $strongarm;
@@ -148,7 +164,7 @@ function h5p_editable_feature_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'h5p_hub_is_enabled';
-  $strongarm->value = 1;
+  $strongarm->value = TRUE;
   $export['h5p_hub_is_enabled'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -211,7 +227,7 @@ function h5p_editable_feature_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_admin_theme';
-  $strongarm->value = '1';
+  $strongarm->value = 0;
   $export['node_admin_theme'] = $strongarm;
 
   $strongarm = new stdClass();
