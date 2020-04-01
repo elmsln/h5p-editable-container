@@ -25,3 +25,12 @@ projects[entity][subdir] = "contrib"
 
 projects[ctools][version] = "1.15"
 projects[ctools][subdir] = "contrib"
+
+projects[uuid][version] = "1.3"
+projects[uuid][subdir] = "contrib"
+
+projects[strongarm][version] = "2.0"
+projects[strongarm][subdir] = "contrib"
+
+projects[node_export][version] = "3.x-dev"
+projects[node_export][subdir] = "contrib"

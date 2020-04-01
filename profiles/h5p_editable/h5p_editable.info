@@ -1,31 +1,30 @@
 ; Packaging information
 name = "H5P Editable"
-description = "Not for production usage, just for editing files in a container"
+description = "Not for production usage outside of a container"
 exclusive = "1"
 core = "7.x"
-
 ; Core
-dependencies[] = block
-dependencies[] = contextual
 dependencies[] = field
 dependencies[] = field_sql_storage
 dependencies[] = file
 dependencies[] = filter
-dependencies[] = help
-dependencies[] = image
-dependencies[] = list
-dependencies[] = menu
 dependencies[] = node
-dependencies[] = number
 dependencies[] = options
 dependencies[] = system
 dependencies[] = text
 dependencies[] = user
 ; Contrib
 dependencies[] = admin_menu
-dependencies[] = ctools
 dependencies[] = entity
 dependencies[] = features
 dependencies[] = entity_iframe
 dependencies[] = entity_iframe_mode
 dependencies[] = h5p
+dependencies[] = h5peditor
+dependencies[] = strongarm
+dependencies[] = ctools
+dependencies[] = node_export
+dependencies[] = uuid
+; Features
+dependencies[] = h5p_editable_feature
+dependencies[] = h5p_editable_node

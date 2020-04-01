@@ -8,13 +8,13 @@ function h5p_editable_install() {
   node_access_rebuild();
   _h5p_editable_installer_theme('entity_iframe_theme');
   variable_set('site_frontpage', 'node/1');
-  _h5p_editable_installer_roles();
+  features_revert('h5p_editable_feature');
 }
 
 /**
  * Set the default theme and some blocks correctly.
  */
-function _h5p_editable_installer_theme() {
+function _h5p_editable_installer_theme($default_theme) {
   // Enable some default blocks.
   $admin_theme = 'adminimal';
   // disable all themes
@@ -95,12 +95,18 @@ function _h5p_editable_installer_theme() {
  * Give admin role all permissions and assigns it to user 1.
  */
 function _h5p_editable_installer_roles() {
-  // assign administrator role all permissions
+  // load admin role
+  $role = user_role_load_by_name('administrator');
+  // ensure we got an administrator role though it should be impossible
+  if (isset($role->rid)) {
+    // assign administrator role all permissions
+    user_role_grant_permissions($role->rid, array_keys(module_invoke_all('permission')));
+    // Set this as the administrator role.
+    variable_set('user_admin_role', $role->rid);
+    // Assign user 1 the "administrator" role.
+    db_insert('users_roles')
+      ->fields(array('uid' => 1, 'rid' => $role->rid))
+      ->execute();
+  }
   user_role_grant_permissions(2, array_keys(module_invoke_all('permission')));
-  // Set this as the administrator role.
-  variable_set('user_admin_role', 2);
-  // Assign user 1 the "administrator" role.
-  db_insert('users_roles')
-    ->fields(array('uid' => 1, 'rid' => 2))
-    ->execute();
 }

@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * @file
+ * Code for the H5P Editable feature feature.
+ */
+
+include_once 'h5p_editable_feature.features.inc';
