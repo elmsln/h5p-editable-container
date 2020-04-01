@@ -2,5 +2,7 @@
 
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the H5P editable node feature.
  */
+
+include_once 'h5p_editable_node.features.inc';

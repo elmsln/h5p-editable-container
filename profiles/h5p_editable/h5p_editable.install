@@ -7,8 +7,20 @@
 function h5p_editable_install() {
   node_access_rebuild();
   _h5p_editable_installer_theme('entity_iframe_theme');
-  variable_set('site_frontpage', 'node/1');
   features_revert('h5p_editable_feature');
+  // Get the contents of the .sql file.
+  $sql = file_get_contents(drupal_get_path('profile', 'h5p_editable') . '/sql/h5p-libraries.sql');
+  // Split into individual statements based on new lines.
+  $statements = preg_split('/[\n\r]+/', $sql);
+  foreach ($statements as $query) {
+    $query = trim($query);
+    if ($query != '') {
+      @db_query($query);
+    }
+  }
+  variable_set('site_frontpage', 'node/1/edit');
+  // make sure the h5p query data takes
+  drupal_flush_all_caches();
 }
 
 /**
