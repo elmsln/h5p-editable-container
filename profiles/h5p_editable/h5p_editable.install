@@ -9,13 +9,27 @@ function h5p_editable_install() {
   _h5p_editable_installer_theme('entity_iframe_theme');
   features_revert('h5p_editable_feature');
   // Get the contents of the .sql file.
-  $sql = file_get_contents(drupal_get_path('profile', 'h5p_editable') . '/sql/h5p-libraries.sql');
-  // Split into individual statements based on new lines.
-  $statements = preg_split('/[\n\r]+/', $sql);
-  foreach ($statements as $query) {
-    $query = trim($query);
-    if ($query != '') {
-      @db_query($query);
+  $files = array(
+    'db_table_h5p_content_user_data.sql',
+    'db_table_h5p_counters.sql',
+    'db_table_h5p_events.sql',
+    'db_table_h5p_libraries.sql',
+    'db_table_h5p_libraries_hub_cache.sql',
+    'db_table_h5p_libraries_languages.sql',
+    'db_table_h5p_libraries_libraries.sql',
+    'db_table_h5p_nodes.sql',
+    'db_table_h5p_nodes_libraries.sql',
+    'db_table_h5p_points.sql',
+  );
+  foreach ($files as $file) {
+    $sql = file_get_contents(drupal_get_path('profile', 'h5p_editable') . '/sql/' . $file);
+    // Split into individual statements based on new lines.
+    $statements = preg_split('/[\n\r]+/', $sql);
+    foreach ($statements as $query) {
+      $query = trim($query);
+      if ($query != '') {
+        @db_query($query);
+      }
     }
   }
   variable_set('site_frontpage', 'node/1/edit');

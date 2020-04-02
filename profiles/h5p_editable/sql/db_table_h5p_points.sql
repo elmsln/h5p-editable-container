@@ -1,0 +1,3 @@
+
+TRUNCATE TABLE `h5p_points`;
+INSERT INTO `h5p_points` VALUES(1, 1, 1585788946, 0, NULL, NULL);
